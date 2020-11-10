@@ -1,8 +1,16 @@
 package jm.task.core.jdbc;
 
 
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import javax.persistence.Query;
 import java.util.List;
 
 public class Main {
@@ -12,23 +20,28 @@ public class Main {
     static User votTakVot = new User("Aleksandr" , "KuricinAkaNevsky" , (byte) 99);
 
     public static void main( String[] args ) {
+/*
         UserServiceImpl userService = new UserServiceImpl();
         userService.createUsersTable();
         userService.saveUser(nikita.getName() , nikita.getLastName() , nikita.getAge());
         userService.saveUser(aleksey.getName() , aleksey.getLastName() , aleksey.getAge());
         userService.saveUser(andrey.getName() , andrey.getLastName() , andrey.getAge());
         userService.saveUser(votTakVot.getName() , votTakVot.getLastName() , votTakVot.getAge());
+
+
         /*Вывод в консоль расположен вконце блока try внутри метода getAllUsers(),
         так же устроен и метод saveUser(). таким образом можно еще и узнать,
         не перешло ли управление блоку catch.
         Я перенесу его, если он должен быть именно в main().
          */
+        /*
         List list = userService.getAllUsers();
         //userService.removeUserById(1); // При желание можно проверить работоспособность.
         userService.cleanUsersTable();
         userService.dropUsersTable();
 
-
+         */
     }
+
 }
 
