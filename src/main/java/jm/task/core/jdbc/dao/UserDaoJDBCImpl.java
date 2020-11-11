@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private final Util util = new Util();
-    private final Connection connection = util.getConnection();
+    private final Connection connection = Util.getConnection();
     private final String CREATE = "create table if not exists users (id int auto_increment,name varchar(45) not null,  " +
             "lastName varchar(45) not null,age int null,constraint users_pk primary key (id))";
     private final String DROP = "drop table if exists users";
@@ -43,9 +42,14 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.execute();
+            connection.commit();
             System.out.println("User с именем – " + name + " добавлен в базу данных");
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -53,8 +57,13 @@ public class UserDaoJDBCImpl implements UserDao {
         try(PreparedStatement preparedStatement = connection.prepareStatement(REMOVE)){
             preparedStatement.setLong(1,id);
             preparedStatement.execute();
+            connection.commit();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

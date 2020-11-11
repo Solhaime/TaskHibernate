@@ -1,16 +1,8 @@
 package jm.task.core.jdbc;
 
 
-import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.util.Util;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-import javax.persistence.Query;
 import java.util.List;
 
 public class Main {
@@ -20,7 +12,7 @@ public class Main {
     static User votTakVot = new User("Aleksandr" , "KuricinAkaNevsky" , (byte) 99);
 
     public static void main( String[] args ) {
-/*
+
         UserServiceImpl userService = new UserServiceImpl();
         userService.createUsersTable();
         userService.saveUser(nikita.getName() , nikita.getLastName() , nikita.getAge());
@@ -34,13 +26,13 @@ public class Main {
         не перешло ли управление блоку catch.
         Я перенесу его, если он должен быть именно в main().
          */
-        /*
+
         List list = userService.getAllUsers();
         //userService.removeUserById(1); // При желание можно проверить работоспособность.
         userService.cleanUsersTable();
         userService.dropUsersTable();
 
-         */
+
     }
 
 }

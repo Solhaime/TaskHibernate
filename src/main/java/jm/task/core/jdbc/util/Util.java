@@ -13,10 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Util {
-    private final String URL = "jdbc:mysql://localhost:3306/firsttask?verifyServerCertificate=false&useSSL=false&requireSSL=false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC";
-    private final String USERNAME = "root";
-    private final String PASSWORD = "jdbcsxqd17823";
-    private Connection connection;
+    private static final String URL = "jdbc:mysql://localhost:3306/firsttask?verifyServerCertificate=false&useSSL=false&requireSSL=false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "jdbcsxqd17823";
+    private static Connection connection;
     private static StandardServiceRegistry registry;
     private static SessionFactory sessionFactory;
 
@@ -62,16 +62,17 @@ public class Util {
     }
      */
 
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public Util() {
+    public static Connection getConnection() {
         try {
             connection = DriverManager.getConnection(URL , USERNAME , PASSWORD);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return connection;
+    }
+
+    public Util() {
+
     }
 
 /*
