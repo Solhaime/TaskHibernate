@@ -28,7 +28,7 @@ public class Main {
          */
 
         List list = userService.getAllUsers();
-        //userService.removeUserById(1); // При желание можно проверить работоспособность.
+        //userService.removeUserById(4); // При желание можно проверить работоспособность.
         userService.cleanUsersTable();
         userService.dropUsersTable();
 

@@ -63,6 +63,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.save(user);
             try {
                 transaction.commit();
+                System.out.println("User с именем – " + name + " добавлен в базу данных");
             }catch (HibernateException e){
                 transaction.rollback();
             }
@@ -106,6 +107,7 @@ public class UserDaoHibernateImpl implements UserDao {
             List from_user = session.createQuery("from User").getResultList();
             try {
                 transaction.commit();
+                System.out.println(from_user.toString().replaceAll("[\\[\\]]",""));
             }catch (HibernateException e){
                 transaction.rollback();
             }
